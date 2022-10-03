@@ -22,7 +22,9 @@
 
     <bean id="Knight"
           class="umin.trapp.warriors.Knight"
-          scope="prototype">
+          scope="prototype"
+          init-method="init"
+          destroy-method="destroy">
         <property name="type" value="${Knight.type}"/>
         <property name="healthPoint" value="${Knight.healthPoint}"/>
         <property name="damage" value="${Knight.damage}"/>
@@ -30,7 +32,9 @@
 
     <bean id="Wizard"
           class="umin.trapp.warriors.Wizard"
-          scope="prototype">
+          scope="prototype"
+          init-method="init"
+          destroy-method="destroy">
         <property name="type" value="${Wizard.type}"/>
         <property name="healthPoint" value="${Wizard.healthPoint}"/>
         <property name="damage" value="${Wizard.damage}"/>
@@ -38,7 +42,9 @@
 
     <bean id="Archer"
           class="umin.trapp.warriors.Archer"
-          scope="prototype">
+          scope="prototype"
+          init-method="init"
+          destroy-method="destroy">
         <property name="type" value="${Archer.type}"/>
         <property name="healthPoint" value="${Archer.healthPoint}"/>
         <property name="damage" value="${Archer.damage}"/>
