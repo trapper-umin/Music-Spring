@@ -24,7 +24,8 @@
           class="umin.trapp.warriors.Knight"
           scope="prototype"
           init-method="init"
-          destroy-method="destroy">
+          destroy-method="destroy"
+          factory-method="factory">
         <property name="type" value="${Knight.type}"/>
         <property name="healthPoint" value="${Knight.healthPoint}"/>
         <property name="damage" value="${Knight.damage}"/>
@@ -34,7 +35,8 @@
           class="umin.trapp.warriors.Wizard"
           scope="prototype"
           init-method="init"
-          destroy-method="destroy">
+          destroy-method="destroy"
+          factory-method="factory">
         <property name="type" value="${Wizard.type}"/>
         <property name="healthPoint" value="${Wizard.healthPoint}"/>
         <property name="damage" value="${Wizard.damage}"/>
@@ -44,7 +46,8 @@
           class="umin.trapp.warriors.Archer"
           scope="prototype"
           init-method="init"
-          destroy-method="destroy">
+          destroy-method="destroy"
+          factory-method="factory">
         <property name="type" value="${Archer.type}"/>
         <property name="healthPoint" value="${Archer.healthPoint}"/>
         <property name="damage" value="${Archer.damage}"/>
