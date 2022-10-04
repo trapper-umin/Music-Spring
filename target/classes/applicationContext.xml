@@ -8,45 +8,6 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="classpath:Warrior.properties"/>
-
-    <bean id="Warriors"
-          class="java.util.ArrayList">
-        <constructor-arg>
-            <list>
-                <ref bean="Knight" />
-                <ref bean="Wizard"/>
-                <ref bean="Archer"/>
-            </list>
-        </constructor-arg>
-    </bean>
-
-    <bean id="Knight"
-          class="umin.trapp.warriors.Knight"
-          scope="prototype">
-        <property name="type" value="${Knight.type}"/>
-        <property name="healthPoint" value="${Knight.healthPoint}"/>
-        <property name="damage" value="${Knight.damage}"/>
-    </bean>
-
-    <bean id="Wizard"
-          class="umin.trapp.warriors.Wizard"
-          scope="prototype">
-        <property name="type" value="${Wizard.type}"/>
-        <property name="healthPoint" value="${Wizard.healthPoint}"/>
-        <property name="damage" value="${Wizard.damage}"/>
-    </bean>
-
-    <bean id="Archer"
-          class="umin.trapp.warriors.Archer"
-          scope="prototype">
-        <property name="type" value="${Archer.type}"/>
-        <property name="healthPoint" value="${Archer.healthPoint}"/>
-        <property name="damage" value="${Archer.damage}"/>
-    </bean>
-
-    <bean id="Process"
-          class="umin.trapp.Process">
-        <property name="warriors" ref="Warriors"/>
-    </bean>
+    <context:component-scan base-package="umin.trapp"/>
 
 </beans>
