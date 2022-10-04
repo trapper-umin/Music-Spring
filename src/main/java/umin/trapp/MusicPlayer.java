@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Component("player")
 public class MusicPlayer {
@@ -18,9 +19,16 @@ public class MusicPlayer {
         musics.add(pop);
     }
 
-    public void playMusic(){
-        for (Music music : musics){
-            System.out.printf("Now play %s music\n",music.getName());
+    public void playMusic(Random random, String genre){
+        int rand;
+        if(genre.equals("classic")){
+            List<String> compositions=musics.get(0).getCompositions();
+            rand=random.nextInt(3);
+            System.out.printf("Playing: %s\n",compositions.get(rand));
+        }else if (genre.equals("pop")) {
+            List<String> compositions = musics.get(1).getCompositions();
+            rand = random.nextInt(3);
+            System.out.printf("Playing: %s\n", compositions.get(rand));
         }
     }
 }
