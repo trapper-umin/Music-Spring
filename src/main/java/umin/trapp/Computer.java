@@ -1,13 +1,13 @@
 package umin.trapp;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Random;
 import java.util.Scanner;
 
 public class Computer {
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
+        AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(SpringConfiguration.class);
 
         MusicPlayer musicPlayer=context.getBean("player",MusicPlayer.class);
         Scanner keyboard=new Scanner(System.in);
@@ -22,5 +22,7 @@ public class Computer {
         }else if(genre.equals(EnumMusic.POP.name().toLowerCase())){
             musicPlayer.playMusic(random,"pop");
         }
+
+        context.close();
     }
 }

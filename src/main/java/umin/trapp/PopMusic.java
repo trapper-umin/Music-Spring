@@ -3,6 +3,8 @@ package umin.trapp;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,14 @@ import java.util.List;
 public class PopMusic extends Music{
 
     List<String> compositions=new ArrayList<>();
+    @PostConstruct
+    private void init(){
+
+    }
+    @PreDestroy
+    private void destroy(){
+
+    }
 
     private PopMusic(){
         setName("POP");

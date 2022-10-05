@@ -1,14 +1,25 @@
 package umin.trapp;
 
 import lombok.Getter;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component("classic")
 public class ClassicMusic extends Music{
     private List<String> compositions=new ArrayList<>();
+    @PostConstruct
+    private void init(){
+
+    }
+    @PreDestroy
+    private void destroy(){
+
+    }
 
     public ClassicMusic(){
         setName("CLASSIC");
