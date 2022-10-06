@@ -1,7 +1,5 @@
-package umin.trapp;
+package umin.trapp.computer;
 
-import lombok.Getter;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;

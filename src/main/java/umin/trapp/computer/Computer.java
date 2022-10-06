@@ -1,4 +1,4 @@
-package umin.trapp;
+package umin.trapp.computer;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
