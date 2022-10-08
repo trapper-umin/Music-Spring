@@ -15,10 +15,10 @@ public class ControllerCalculator {
                              @RequestParam("second") int second,
                              @RequestParam("action") String action,
                              Model model){
-        String username="Elon Musk";
+        String username="Vlad";
         model.addAttribute("username",username);
 
-          switch (action){
+        switch (action){
             case "multiplication" -> model.addAttribute("action",first*second);
             case "addition" -> model.addAttribute("action",first+second);
             case "subtraction" -> model.addAttribute("action",first-second);
