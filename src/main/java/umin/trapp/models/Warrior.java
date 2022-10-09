@@ -2,7 +2,6 @@ package umin.trapp.models;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
 public class Warrior {
     @Setter@Getter
@@ -14,5 +13,6 @@ public class Warrior {
         this.id=id;
         this.name=name;
     }
+    public Warrior(){}
 
 }
