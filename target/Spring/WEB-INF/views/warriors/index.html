@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ALL WARRIORS</title>
+</head>
+<body>
+    <div th:each="warrior : ${warriors}">
+        <a th:href="@{/app/warrior/{id}(id=${warrior.getId})}" th:text="${warrior.getName()}"></a>
+    </div>
+</body>
+</html>
