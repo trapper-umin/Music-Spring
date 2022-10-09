@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>EDIT</title>
+</head>
+<body>
+  <form th:method="PATCH" th:action="@{/app/warrior/{id}(id=${warrior.getId()})}" th:object="${warrior}">
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name">
+    <br/>
+    <input type="submit" value="Update">
+  </form>
+</body>
+</html>

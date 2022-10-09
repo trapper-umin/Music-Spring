@@ -10,20 +10,26 @@ import java.util.List;
 public class WarriorDAO {
 
     private List<Warrior> warriors;
-    private int id;
+    private static int id=0;
 
     {
         warriors=new ArrayList<>();
-        warriors.add(new Warrior(0,"Knight"));
-        warriors.add(new Warrior(1,"Wizard"));
-        warriors.add(new Warrior(2,"Archer"));
     }
 
-    public List<Warrior> showAll(){
+    public List<Warrior> read(){
         return warriors;
     }
-    public Warrior showViaId(int id){
+    public Warrior readId(int id){
         return warriors.stream().filter(warriors -> warriors.getId() ==id).findAny().orElse(null);
     }
-
+    public void create(Warrior warrior){
+        warrior.setId(id++);
+        warriors.add(warrior);
+    }
+    public void update(Warrior warrior,int id){
+        warriors.get(id).setName(warrior.getName());
+    }
+    public void delete(int id){
+        warriors.remove(id);
+    }
 }
