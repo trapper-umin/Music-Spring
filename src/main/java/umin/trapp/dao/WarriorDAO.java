@@ -30,6 +30,6 @@ public class WarriorDAO {
         warriors.get(id).setName(warrior.getName());
     }
     public void delete(int id){
-        warriors.remove(id);
+        warriors.removeIf(warrior -> warrior.getId()==id);
     }
 }
