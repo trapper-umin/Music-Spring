@@ -3,9 +3,11 @@ package umin.trapp.controlles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import umin.trapp.dao.WarriorDAO;
 import umin.trapp.models.Warrior;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/app/warrior")
@@ -24,7 +26,12 @@ public class WarriorsController {
         return "warriors/create";
     }
     @PostMapping
-    public String createSuccess(@ModelAttribute("warrior") Warrior warrior){
+    public String createSuccess(@ModelAttribute("warrior") @Valid Warrior warrior, BindingResult bindingResult){
+
+        if(bindingResult.hasErrors()){
+            return "warriors/create";
+        }
+
         warriorDAO.create(warrior);
 
         return "redirect:/app/warrior";
@@ -51,7 +58,12 @@ public class WarriorsController {
         return "warriors/edit";
     }
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("warrior")Warrior warrior,@PathVariable("id")int id){
+    public String update(@ModelAttribute("warrior")@Valid Warrior warrior,BindingResult bindingResult, @PathVariable("id")int id){
+
+        if(bindingResult.hasErrors()){
+            return "warriors/edit";
+        }
+
         warriorDAO.update(warrior,id);
 
         return "redirect:/app/warrior/{id}";

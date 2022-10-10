@@ -5,11 +5,16 @@
     <title>WARRIOR</title>
 </head>
 <body>
-    <p th:text="${'Name: '+warrior.getName()+' id: '+warrior.getId()}"></p>
-    <a th:href="@{/app/warrior/{id}/edit(id=${warrior.getId()})}">Edit</a>
+    <p th:text="${'Name: '+ warrior.getName()+' HP: '+warrior.getHealthPoint+' Weapon: '+warrior.getWeapon}"></p>
     <br/>
+    <form th:method="GET" th:action="@{/app/warrior/{id}/edit(id=${warrior.getId()})}">
+        <input type="submit" value="Edit">
+    </form>
     <form th:method="DELETE" th:action="@{/app/warrior/{id}(id=${warrior.getId()})}">
         <input type="submit" value="Delete">
+    </form>
+    <form th:method="GET" th:action="@{/app/warrior}">
+        <input type="submit" value="Back">
     </form>
 </body>
 </html>
