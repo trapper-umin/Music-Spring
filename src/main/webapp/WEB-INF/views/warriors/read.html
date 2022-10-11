@@ -6,10 +6,12 @@
 </head>
 <body>
     <div th:each="warrior : ${warriors}">
-        <a th:href="@{/app/warrior/{id}(id=${warrior.getId})}" th:text="${warrior.getName()}"></a>
+        <a th:href="@{/app/warrior/{id}(id=${warrior.getId})}" th:text="${'Name: '+ warrior.getName()+' HP: '+warrior.getHealthPoint+' Weapon: '+warrior.getWeapon}"></a>
     </div>
     <br/>
     <hr/>
-    <a th:href="@{/app/warrior/new}">Create new</a>
+    <form th:method="GET" th:action="@{/app/warrior/new}">
+        <input type="submit" value="Create new">
+    </form>
 </body>
 </html>

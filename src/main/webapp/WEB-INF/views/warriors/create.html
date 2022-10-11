@@ -8,7 +8,16 @@
     <form th:method="POST" th:action="@{/app/warrior}" th:object="${warrior}">
         <label for="name">Enter name: </label>
         <input type="text" th:field="*{name}" id="name">
+        <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
         <br>
+        <label for="HP">Enter HP: </label>
+        <input type="text" th:field="*{healthPoint}" id="HP">
+        <div style="color: red" th:if="${#fields.hasErrors('healthPoint')}" th:errors="*{healthPoint}"></div>
+        <br/>
+        <label for="weapon">Enter weapon: </label>
+        <input type="text" th:field="*{weapon}" id="weapon">
+        <div style="color: red" th:if="${#fields.hasErrors('weapon')}" th:errors="*{weapon}"></div>
+        <br/>
         <input type="submit" value="Create">
     </form>
 </body>
