@@ -75,4 +75,12 @@ public class WarriorsController {
         return "redirect:/app/warrior";
     }
 
+    @DeleteMapping
+    public String deleteAll(){
+
+        warriorDAO.deleteAll();
+
+        return "redirect:/app/warrior";
+    }
+
 }
