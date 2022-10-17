@@ -23,6 +23,12 @@ public class Warrior {
     @NotEmpty(message="Weapon should not be empty")
     private String weapon;
 
+    public Warrior(int id,String name,int healthPoint,String weapon){
+        this.id=id;
+        this.name=name;
+        this.healthPoint=healthPoint;
+        this.weapon=weapon;
+    }
     public Warrior(int id,String name){
         this.id=id;
         this.name=name;
