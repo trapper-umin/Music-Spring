@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CREATE</title>
+</head>
+<body>
+    <form th:method="POST" th:action="@{/app/picture}" th:object="${picture}">
+        <label for="url">Enter url</label>
+        <input type="text" th:field="*{url}" id="url">
+        <br/>
+        <input type="submit" value="create">
+    </form>
+</body>
+</html>

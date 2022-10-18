@@ -27,7 +27,7 @@ public class WarriorDAO {
         return jdbcTemplate.query("SELECT * FROM Warrior WHERE id=?",new Object[]{id},new BeanPropertyRowMapper<>(Warrior.class)).stream().findAny().orElse(null);
     }
     public void create(Warrior warrior){
-        jdbcTemplate.update("INSERT INTO Warrior VALUES (?,?,?,?)",id++,warrior.getName(),warrior.getHealthPoint(),warrior.getWeapon());
+        jdbcTemplate.update("INSERT INTO Warrior(name,healthpoint,weapon) VALUES (?,?,?)",warrior.getName(),warrior.getHealthPoint(),warrior.getWeapon());
     }
     public void update(Warrior warrior,int id){
         jdbcTemplate.update("UPDATE Warrior SET name=?,healthPoint=?,weapon=? WHERE id=?",warrior.getName(),warrior.getHealthPoint(),warrior.getWeapon(),id);
@@ -37,7 +37,7 @@ public class WarriorDAO {
     }
 
     public void deleteAll(){
-        jdbcTemplate.update("DELETE FROM warrior WHERE id>-1");
+        jdbcTemplate.update("DELETE FROM warrior WHERE id>0");
     }
 
     ///////////////////////////
@@ -45,14 +45,12 @@ public class WarriorDAO {
     //////////////////////////
 
     public void withoutBatch(){
-     List<Warrior> warriors=new ArrayList<>();
-     warriors=create1000Objects();
+     List<Warrior> warriors=create1000Objects();
 
      long before=System.currentTimeMillis();
 
      for (int i=0;i<warriors.size();i++){
-         jdbcTemplate.update("INSERT INTO warrior(id,name,healthPoint,weapon) VALUES (?,?,?,?)",
-                 warriors.get(i).getId(),
+         jdbcTemplate.update("INSERT INTO warrior(name,healthPoint,weapon) VALUES (?,?,?)",
                  warriors.get(i).getName(),
                  warriors.get(i).getHealthPoint(),
                  warriors.get(i).getWeapon());
@@ -69,13 +67,12 @@ public class WarriorDAO {
 
         long before=System.currentTimeMillis();
 
-        jdbcTemplate.batchUpdate("INSERT INTO warrior(id,name,healthPoint,weapon) VALUES (?,?,?,?)", new BatchPreparedStatementSetter() {
+        jdbcTemplate.batchUpdate("INSERT INTO warrior(name,healthPoint,weapon) VALUES (?,?,?)", new BatchPreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement ps, int i) throws SQLException {
-                ps.setInt(1,warriors.get(i).getId());
-                ps.setString(2,warriors.get(i).getName());
-                ps.setInt(3,warriors.get(i).getHealthPoint());
-                ps.setString(4,warriors.get(i).getWeapon());
+                ps.setString(1,warriors.get(i).getName());
+                ps.setInt(2,warriors.get(i).getHealthPoint());
+                ps.setString(3,warriors.get(i).getWeapon());
             }
 
             @Override

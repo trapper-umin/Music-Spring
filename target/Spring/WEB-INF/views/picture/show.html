@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">URL</th>
+        </tr>
+        <tr th:each="picture :${pictures}">
+            <td>
+                <a th:href="@{/app/picture/{id}(id=${picture.getId})}" th:text="${picture.getId}"></a>
+            </td>
+            <td th:text="${picture.getUrl}"></td>
+        </tr>
+    </table>
+</body>
+</html>
